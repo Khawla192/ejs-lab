@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+  <h1>Full Menu</h1>
+  <% let mains = []; 
+  let desserts = []; 
+  let sides = []; %>
+    <% menu.forEach(dish => { %>
+        <% if (dish.category === 'mains') { mains.push(dish); } %>
+        <% if (dish.category === 'desserts') { desserts.push(dish); } %>
+        <% if (dish.category === 'sides') { sides.push(dish); } %>
+    <% }); %>
+
+    <% if (mains.length > 0) { %>
+        <h2>Mains</h2>
+        <ul>
+            <% mains.forEach(main => { %>
+                <li>
+                    <h3><%= main.name %></h3>
+                    <p>Price: $<%= main.price %></p>
+                    <p>Rating: <%= main.rating %>/5</p>
+                    <p><%= main.details %></p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+
+    <% if (desserts.length > 0) { %>
+        <h2>Desserts</h2>
+        <ul>
+            <% desserts.forEach(dessert => { %>
+                <li>
+                    <h3><%= dessert.name %></h3>
+                    <p>Price: $<%= dessert.price %></p>
+                    <p>Rating: <%= dessert.rating %>/5</p>
+                    <p><%= dessert.details %></p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+
+    <% if (sides.length > 0) { %>
+        <h2>Sides</h2>
+        <ul>
+            <% sides.forEach(side => { %>
+                <li>
+                    <h3><%= side.name %></h3>
+                    <p>Price: $<%= side.price %></p>
+                    <p>Rating: <%= side.rating %>/5</p>
+                    <p><%= side.details %></p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+</body>
+</html>
